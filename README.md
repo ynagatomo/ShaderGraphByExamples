@@ -1,27 +1,28 @@
-# ShaderGraph by Examples for Apple Vision Pro
+# ShaderGraph by Examples in visionOS
 
-## Product
+This project shows examples of ShaderGraph in visionOS 2.
 
-- Name: ShaderGraph by Examples
-- Release: v1.0 - Early 2025
 - GitHub : https://github.com/ynagatomo/ShaderGraphByExamples
+- Xcode 16.1 , visionOS 2.1
+- Some examples only work with a real Apple Vision Pro device.
+
+## ShaderGraph Examples
+
+| | Example | Name | Description |
+| --- | --- | --- | --- |
+| <img src="img/ex01.heic" width=200> | Ex01 | Interior Mapping  | Calculating the intersection of the line of sight and the wall and draw a space with pseudo depth. |
 
 ## Change logs
 
 <details>
-<summary>v1.0 Build 1 (Sep 29, 2024)</summary>
+<summary>click to open</summary>
 
-1. Init.
+1. [Nov 3, 2024] Added the Ex01, "Interior Mapping Shader"
 
 </details>
 
-## Development Team
+## License
 
-- Yasuhito Nagatomo
+MIT License
 
-## Development Tools
-
-- Xcode 16.1 beta 2 or later
-- visionOS 2.1 beta 2 or later
-
-since Sep, 2024
+since Nov, 2024

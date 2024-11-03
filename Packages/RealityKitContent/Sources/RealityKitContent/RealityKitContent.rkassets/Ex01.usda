@@ -487,14 +487,14 @@ def Xform "Root"
         {
             uniform token info:id = "ND_image_color3"
             color3f inputs:default
-            asset inputs:file = @Textures/room2x2a.png@
+            asset inputs:file = @Textures/roomtexture2.png@
             string inputs:filtertype
             float2 inputs:texcoord.connect = </Root/InteriorMapping/Add_2.outputs:out>
             string inputs:uaddressmode
             string inputs:vaddressmode
             color3f outputs:out
             float2 ui:nodegraph:node:pos = (1785.9594, 379.68823)
-            int ui:nodegraph:node:stackingOrder = 2804
+            int ui:nodegraph:node:stackingOrder = 2827
         }
 
         def Shader "Add_3"
@@ -598,6 +598,20 @@ def Xform "Root"
                 )
             }
         }
+    }
+
+    def "frame1x0_5m" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.5707963, 0, 0)
+        }
+        prepend references = @Models/frame1x0_5m.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0.7071067, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0.0001)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

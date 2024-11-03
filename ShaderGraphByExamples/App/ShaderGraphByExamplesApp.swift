@@ -16,10 +16,13 @@ struct ShaderGraphByExamplesApp: App {
         WindowGroup {
             ContentView()
                 .environment(appModel)
+                .frame(width: 900, height: 600)
         }
+        .windowStyle(.plain)
+        .windowResizability(.contentSize)
 
-        ImmersiveSpace(id: appModel.immersiveSpaceID) {
-            ImmersiveView()
+        ImmersiveSpace(id: appModel.immersiveSpaceID, for: Example.self) { example in
+            ImmersiveView(example: example)
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open

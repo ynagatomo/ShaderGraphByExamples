@@ -14,8 +14,11 @@
 		BA0B23732CA8D59800A20E3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B23692CA8D59800A20E3C /* ContentView.swift */; };
 		BA0B23742CA8D59800A20E3C /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B236A2CA8D59800A20E3C /* ImmersiveView.swift */; };
 		BA0B23752CA8D59800A20E3C /* ShaderGraphByExamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B236C2CA8D59800A20E3C /* ShaderGraphByExamplesApp.swift */; };
-		BA0B23762CA8D59800A20E3C /* ToggleImmersiveSpaceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B236D2CA8D59800A20E3C /* ToggleImmersiveSpaceButton.swift */; };
 		BA0B237D2CA8D73000A20E3C /* Logger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B237C2CA8D73000A20E3C /* Logger+Extensions.swift */; };
+		BA224F332CD7798C008E05E6 /* ExampleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA224F322CD7798C008E05E6 /* ExampleList.swift */; };
+		BA224F352CD77B4B008E05E6 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA224F342CD77B4B008E05E6 /* AppConstant.swift */; };
+		BA224F372CD791F9008E05E6 /* ExampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA224F362CD791F9008E05E6 /* ExampleItem.swift */; };
+		BA224F392CD79202008E05E6 /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA224F382CD79202008E05E6 /* ExampleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +31,12 @@
 		BA0B236A2CA8D59800A20E3C /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		BA0B236B2CA8D59800A20E3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA0B236C2CA8D59800A20E3C /* ShaderGraphByExamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderGraphByExamplesApp.swift; sourceTree = "<group>"; };
-		BA0B236D2CA8D59800A20E3C /* ToggleImmersiveSpaceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleImmersiveSpaceButton.swift; sourceTree = "<group>"; };
 		BA0B237C2CA8D73000A20E3C /* Logger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extensions.swift"; sourceTree = "<group>"; };
 		BA0B237E2CA8D81700A20E3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BA224F322CD7798C008E05E6 /* ExampleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleList.swift; sourceTree = "<group>"; };
+		BA224F342CD77B4B008E05E6 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		BA224F362CD791F9008E05E6 /* ExampleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleItem.swift; sourceTree = "<group>"; };
+		BA224F382CD79202008E05E6 /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				BA0B236C2CA8D59800A20E3C /* ShaderGraphByExamplesApp.swift */,
+				BA224F322CD7798C008E05E6 /* ExampleList.swift */,
+				BA224F342CD77B4B008E05E6 /* AppConstant.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -113,8 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				BA0B23692CA8D59800A20E3C /* ContentView.swift */,
+				BA224F382CD79202008E05E6 /* ExampleView.swift */,
+				BA224F362CD791F9008E05E6 /* ExampleItem.swift */,
 				BA0B236A2CA8D59800A20E3C /* ImmersiveView.swift */,
-				BA0B236D2CA8D59800A20E3C /* ToggleImmersiveSpaceButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,12 +240,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA224F372CD791F9008E05E6 /* ExampleItem.swift in Sources */,
+				BA224F332CD7798C008E05E6 /* ExampleList.swift in Sources */,
 				BA0B23722CA8D59800A20E3C /* AppModel.swift in Sources */,
 				BA0B23732CA8D59800A20E3C /* ContentView.swift in Sources */,
+				BA224F352CD77B4B008E05E6 /* AppConstant.swift in Sources */,
 				BA0B23742CA8D59800A20E3C /* ImmersiveView.swift in Sources */,
 				BA0B237D2CA8D73000A20E3C /* Logger+Extensions.swift in Sources */,
 				BA0B23752CA8D59800A20E3C /* ShaderGraphByExamplesApp.swift in Sources */,
-				BA0B23762CA8D59800A20E3C /* ToggleImmersiveSpaceButton.swift in Sources */,
+				BA224F392CD79202008E05E6 /* ExampleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +273,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.atarayosd.ShaderGraphByExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -290,7 +302,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.atarayosd.ShaderGraphByExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
