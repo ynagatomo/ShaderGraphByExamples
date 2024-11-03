@@ -71,27 +71,6 @@
       [
         "82DC4AF2-611D-459F-AA26-C8D1681990F4",
         "Root",
-        "plane1mx0_5mDFB",
-        "env_light"
-      ],
-      {
-        "disallowsFraming" : false,
-        "isExpanded" : false,
-        "isLocked" : false
-      },
-      [
-        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
-        "Root",
-        "plane1mx0_5mDFB",
-        "Plane"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
-        "Root",
         "plane",
         "Materials"
       ],
@@ -111,6 +90,27 @@
       [
         "82DC4AF2-611D-459F-AA26-C8D1681990F4",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
+        "Root",
+        "plane1mx0_5mDFB",
+        "env_light"
+      ],
+      {
+        "disallowsFraming" : false,
+        "isExpanded" : false,
+        "isLocked" : false
+      },
+      [
+        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
+        "Root",
+        "plane1mx0_5mDFB",
+        "Plane"
       ],
       {
         "isExpanded" : true,
@@ -144,7 +144,7 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Sphere_Left"
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -161,7 +161,7 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "GridMaterial"
+        "Sphere_Left"
       ],
       {
         "isExpanded" : true,
@@ -182,8 +182,7 @@
     "objectMetadataList" : [
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -191,7 +190,8 @@
       },
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root"
+        "Root",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -218,6 +218,18 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "FBFFEBEA-B32F-4413-BAA0-6DC996551A82" : {
+    "objectMetadataList" : [
+      [
+        "FBFFEBEA-B32F-4413-BAA0-6DC996551A82",
         "Root"
       ],
       {

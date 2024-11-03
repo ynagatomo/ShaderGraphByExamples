@@ -3,7 +3,7 @@
 
   },
   "secondaryToolbarData" : {
-    "isGridVisible" : true
+    "isGridVisible" : false
   },
   "unitDefaults" : {
     "kg" : "g",
