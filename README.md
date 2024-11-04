@@ -12,6 +12,12 @@ This project shows examples of ShaderGraph in visionOS 2.
 | --- | --- | --- | --- |
 | <img src="img/ex01.heic" width=200> | Ex01 | Interior Mapping  | Calculating the intersection of the line of sight and the wall and draw a space with pseudo depth. |
 
+## References
+
+- Sample Code: ShaderGraph Examples in visionOS 1.2 [GitHub: ynagatomo/SGMExamples](https://github.com/ynagatomo/SGMExamples)
+- Documentation: ShaderGraph Nodes in RealityKit [GitHub: ynagatomo](https://github.com/ynagatomo/evolution-Metal-ARKit-RealityKit-sheet#shadergraph-nodes-in-realitykit)
+- Article: ShaderGraph in visionOS (Jan 6, 2024) [Medium: ynagatomo](https://levelup.gitconnected.com/shadergraph-in-visionos-45598e49626c)
+
 ## Change logs
 
 <details>
