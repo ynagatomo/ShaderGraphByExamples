@@ -1,0 +1,418 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def "warphole" (
+        active = true
+        prepend references = @Models/warphole.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Geom"
+        {
+            over "Cylinder"
+            {
+                over "primitive_0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </Root/MatHoleSide> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "primitive_1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </Root/MatHoleSide> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+    }
+
+    def Material "MatHoleSide"
+    {
+        token outputs:mtlx:surface.connect = </Root/MatHoleSide/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1365.6831, 94.400246)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 1070
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap
+            color3f inputs:color.connect = </Root/MatHoleSide/Add_1.outputs:out>
+            bool inputs:hasPremultipliedAlpha
+            float inputs:opacity.connect = </Root/MatHoleSide/Range.outputs:out>
+            float inputs:opacityThreshold
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (1139.9756, 179.64314)
+            int ui:nodegraph:node:stackingOrder = 446
+        }
+
+        def Shader "Noise2D_1"
+        {
+            uniform token info:id = "ND_noise2d_float"
+            float inputs:amplitude = -2
+            float inputs:amplitude.connect = </Root/MatHoleSide/Multiply_3.outputs:out>
+            float inputs:pivot = 2
+            float2 inputs:texcoord.connect = </Root/MatHoleSide/Combine2_1.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (325.48428, -65.52462)
+            int ui:nodegraph:node:stackingOrder = 487
+        }
+
+        def Shader "Combine3"
+        {
+            uniform token info:id = "ND_combine3_color3"
+            float inputs:in1.connect = </Root/MatHoleSide/Noise2D_1.outputs:out>
+            float inputs:in2.connect = </Root/MatHoleSide/Noise2D_1.outputs:out>
+            float inputs:in3.connect = </Root/MatHoleSide/Noise2D_1.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (561.2884, -106.076355)
+            int ui:nodegraph:node:stackingOrder = 487
+        }
+
+        def Shader "TextureCoordinates"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-796.75256, 429.95703)
+            int ui:nodegraph:node:stackingOrder = 998
+        }
+
+        def Shader "Time"
+        {
+            uniform token info:id = "ND_time_float"
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-658.8438, -29.868357)
+            int ui:nodegraph:node:stackingOrder = 799
+        }
+
+        def Shader "Multiply_1"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Time.outputs:out>
+            float inputs:in2 = -5
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-12.765842, 190.66928)
+            int ui:nodegraph:node:stackingOrder = 1057
+        }
+
+        def Shader "Separate2"
+        {
+            uniform token info:id = "ND_separate2_vector2"
+            float2 inputs:in.connect = </Root/MatHoleSide/TextureCoordinates.outputs:out>
+            float outputs:outx
+            float outputs:outy
+            float2 ui:nodegraph:node:pos = (451.83575, 327.21768)
+            int ui:nodegraph:node:stackingOrder = 1066
+        }
+
+        def Shader "Oneminus"
+        {
+            uniform token info:id = "ND_realitykit_oneminus_float"
+            float inputs:in.connect = </Root/MatHoleSide/Separate2.outputs:outy>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (613.549, 287.38562)
+            int ui:nodegraph:node:stackingOrder = 1068
+        }
+
+        def Shader "Remap_1"
+        {
+            uniform token info:id = "ND_remap_color3"
+            color3f inputs:in.connect = </Root/MatHoleSide/Combine3.outputs:out>
+            color3f inputs:inhigh = (1, 1, 1) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:inlow
+            color3f inputs:outhigh = (0.9687736, 0.9990856, 1) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:outlow = (0.7458255, 0.8351851, 0.88618606) (
+                colorSpace = "srgb_texture"
+            )
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (746.5747, 112.243965)
+            int ui:nodegraph:node:stackingOrder = 454
+        }
+
+        def Shader "Sin"
+        {
+            uniform token info:id = "ND_sin_float"
+            float inputs:in.connect = </Root/MatHoleSide/Divide.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (67.08527, -104.13013)
+            int ui:nodegraph:node:stackingOrder = 493
+        }
+
+        def Shader "Multiply_3"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Sin.outputs:out>
+            float inputs:in2 = 3
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (190.80727, -95.03593)
+            int ui:nodegraph:node:stackingOrder = 491
+        }
+
+        def Shader "Divide"
+        {
+            uniform token info:id = "ND_divide_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Time.outputs:out>
+            float inputs:in2 = 2
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-50.819252, -106.023796)
+            int ui:nodegraph:node:stackingOrder = 495
+        }
+
+        def Shader "Remap_2"
+        {
+            uniform token info:id = "ND_remap_color3"
+            color3f inputs:in.connect = </Root/MatHoleSide/Combine3.outputs:out>
+            color3f inputs:inhigh = (0.66891575, 0.66891575, 0.66891575) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:inlow = (0.16755447, 0.16755447, 0.16755447) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:outhigh = (0.6830014, 0.9827293, 1) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:outlow
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (741.37286, -82.25717)
+            int ui:nodegraph:node:stackingOrder = 452
+        }
+
+        def Shader "Add_1"
+        {
+            uniform token info:id = "ND_add_color3"
+            color3f inputs:in1.connect = </Root/MatHoleSide/Divide_1.outputs:out>
+            color3f inputs:in2.connect = </Root/MatHoleSide/Remap_1.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (957.3014, 35.67418)
+            int ui:nodegraph:node:stackingOrder = 448
+        }
+
+        def Shader "Divide_1"
+        {
+            uniform token info:id = "ND_divide_color3FA"
+            color3f inputs:in1.connect = </Root/MatHoleSide/Remap_2.outputs:out>
+            float inputs:in2 = 0.5
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (860.9795, -15.646318)
+            int ui:nodegraph:node:stackingOrder = 450
+        }
+
+        def Shader "Range"
+        {
+            uniform token info:id = "ND_range_float"
+            bool inputs:doclamp
+            float inputs:gamma = 0.7
+            float inputs:in.connect = </Root/MatHoleSide/Oneminus.outputs:out>
+            float inputs:outhigh
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (757.44226, 349.16348)
+            int ui:nodegraph:node:stackingOrder = 489
+        }
+
+        def Shader "Separate2_1"
+        {
+            uniform token info:id = "ND_separate2_vector2"
+            float2 inputs:in.connect = </Root/MatHoleSide/TextureCoordinates.outputs:out>
+            float outputs:outx
+            float outputs:outy
+            float2 ui:nodegraph:node:pos = (-600.2774, 193.76372)
+            int ui:nodegraph:node:stackingOrder = 996
+        }
+
+        def Shader "IfGreater"
+        {
+            uniform token info:id = "ND_ifgreater_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Oneminus_1.outputs:out>
+            float inputs:in2.connect = </Root/MatHoleSide/Multiply_4.outputs:out>
+            float inputs:value1.connect = </Root/MatHoleSide/Separate2_1.outputs:outx>
+            float inputs:value2 = 0.5
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-11.59174, 26.382275)
+            int ui:nodegraph:node:stackingOrder = 735
+        }
+
+        def Shader "Multiply_4"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Separate2_1.outputs:outx>
+            float inputs:in2 = 2
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-305.8568, 174.81863)
+            int ui:nodegraph:node:stackingOrder = 1008
+        }
+
+        def Shader "Subtract"
+        {
+            uniform token info:id = "ND_subtract_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Separate2_1.outputs:outx>
+            float inputs:in2 = 0.5
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-371.29382, -14.970964)
+            int ui:nodegraph:node:stackingOrder = 1001
+        }
+
+        def Shader "Multiply_5"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Subtract.outputs:out>
+            float inputs:in2 = 2
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-285.10638, -8.485007)
+            int ui:nodegraph:node:stackingOrder = 1004
+        }
+
+        def Shader "Oneminus_1"
+        {
+            uniform token info:id = "ND_realitykit_oneminus_float"
+            float inputs:in.connect = </Root/MatHoleSide/Multiply_5.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-189.82413, -5.641369)
+            int ui:nodegraph:node:stackingOrder = 1006
+        }
+
+        def Shader "Combine2_1"
+        {
+            uniform token info:id = "ND_combine2_vector2"
+            float inputs:in1.connect = </Root/MatHoleSide/Multiply_6.outputs:out>
+            float inputs:in2.connect = </Root/MatHoleSide/Add_2.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (253.32803, 184.00883)
+            int ui:nodegraph:node:stackingOrder = 1061
+        }
+
+        def Shader "Multiply_6"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/MatHoleSide/IfGreater.outputs:out>
+            float inputs:in2 = 10
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (102.98321, 151.31755)
+            int ui:nodegraph:node:stackingOrder = 1063
+        }
+
+        def Shader "Multiply_7"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Separate2_1.outputs:outy>
+            float inputs:in2 = 5
+            float inputs:in2.connect = </Root/MatHoleSide/Multiply_8.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-15.030858, 263.81973)
+            int ui:nodegraph:node:stackingOrder = 1055
+        }
+
+        def Shader "Add_2"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Multiply_7.outputs:out>
+            float inputs:in2.connect = </Root/MatHoleSide/Multiply_1.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (96.80673, 226.62265)
+            int ui:nodegraph:node:stackingOrder = 1059
+        }
+
+        def Shader "Sin_1"
+        {
+            uniform token info:id = "ND_sin_float"
+            float inputs:in.connect = </Root/MatHoleSide/Time.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-348.37613, 303.109)
+            int ui:nodegraph:node:stackingOrder = 1010
+        }
+
+        def Shader "Add_3"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Sin_1.outputs:out>
+            float inputs:in2 = 2
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-209.02843, 314.08453)
+            int ui:nodegraph:node:stackingOrder = 1053
+        }
+
+        def Shader "Multiply_8"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/MatHoleSide/Add_3.outputs:out>
+            float inputs:in2 = 4
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-108.800705, 305.74432)
+            int ui:nodegraph:node:stackingOrder = 1053
+        }
+    }
+
+    def Xform "Particle" (
+        customData = {
+            float3 rotationEulerHint = (1.5707964, 0, 0)
+        }
+    )
+    {
+        float2 ui:nodegraph:node:pos = (202.68098, 184.34254)
+        int ui:nodegraph:node:stackingOrder = 2
+        quatf xformOp:orient = (0.70710677, 0.70710677, 0, 0)
+        float3 xformOp:scale = (0.99999964, 0.99999964, 0.99999964)
+        float3 xformOp:translate = (0, 0, -0.5)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "VFXEmitter"
+        {
+            token info:id = "RealityKit.VFXEmitter"
+
+            def RealityKitStruct "currentState"
+            {
+                token birthLocation = "Volume"
+                int64 burstCount = 1000
+                token emitterShape = "Cone"
+                bool isLocal = 1
+                bool isLocalFields = 1
+                float particleSpeed = 1
+                float radialAmount = 6.2831855
+                float3 shapeSize = (0.5, 0.5, 0.5)
+
+                def RealityKitStruct "mainEmitter"
+                {
+                    float birthRate = 50
+                    float colorEvolutionPower = 10
+                    float4 endColorA = (0.9999908, 1, 1, 1)
+                    double particleLifeSpan = 5
+                    float particleSize = 0.01
+                    float particleSizeVariation = 0.003
+                    float4 startColorA = (0.004569899, 0.0068443906, 1, 1)
+                    float4 startColorB = (0.8378932, 0.9351597, 1, 1)
+                    float stretchFactor = 10
+                    bool useEndColor = 1
+                    bool useEndColorRange = 0
+                    bool useStartColorRange = 1
+                }
+
+                def RealityKitStruct "spawnedEmitter"
+                {
+                }
+            }
+        }
+    }
+}
+

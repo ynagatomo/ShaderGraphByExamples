@@ -25,6 +25,14 @@ enum ExampleList {
                 description: [
                     "Calculating the intersection of the line of sight and the wall and draw a space with pseudo depth."
                 ],
+                dragable: false),
+        // [Ex02: Warp VFX]
+        Example(name: "Warp VFX",
+                thumbnail: "ex02",
+                sceneName: "Ex02",
+                description: [
+                    "A procedural warp effect shader. You can change the movement, color, and pattern by changing the node's parameters."
+                ],
                 dragable: false)
     ]
 }
