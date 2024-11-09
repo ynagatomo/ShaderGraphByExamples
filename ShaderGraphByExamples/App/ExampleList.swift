@@ -31,6 +31,7 @@ enum ExampleList {
                 thumbnail: "ex02",
                 sceneName: "Ex02",
                 description: [
+                    // swiftlint:disable:next line_length
                     "A procedural warp effect shader. You can change the movement, color, and pattern by changing the node's parameters."
                 ],
                 dragable: false)
