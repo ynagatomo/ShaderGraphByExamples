@@ -34,6 +34,8 @@ struct ExampleView: View {
                     Text(description)
                         .foregroundStyle(.secondary)
                 } // ForEach
+                .frame(width: 300)
+                .padding(.horizontal, 8)
 
                 Button(action: { showImmersiveSpace() }, label: {
                     Text("Open the Example Scene")
@@ -69,4 +71,9 @@ struct ExampleView: View {
             }
         }
     }
+}
+
+#Preview(windowStyle: .automatic) {
+    ExampleView(example: ExampleList.examples.first!)
+        .environment(AppModel())
 }

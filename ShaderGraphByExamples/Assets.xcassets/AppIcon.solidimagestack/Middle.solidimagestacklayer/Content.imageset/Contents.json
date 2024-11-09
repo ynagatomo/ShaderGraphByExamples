@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "appicon_MB.png",
       "idiom" : "vision",
       "scale" : "2x"
     }
