@@ -23,9 +23,8 @@ enum ExampleList {
                 thumbnail: "ex01",
                 sceneName: "Ex01",
                 description: [
-                    "Calculating the intersection of the",
-                    "line of sight and the wall and draw",
-                    "a space with pseudo depth."],
+                    "Calculating the intersection of the line of sight and the wall and draw a space with pseudo depth."
+                ],
                 dragable: false)
     ]
 }
