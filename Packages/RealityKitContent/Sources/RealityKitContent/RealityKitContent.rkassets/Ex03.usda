@@ -1,0 +1,231 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["jewel", "MatJewel", "MatOuter"]
+    def "jewel" (
+        active = false
+        references = @Models/jewel.usdz@
+    )
+    {
+        reorder nameChildren = ["Sphere", "Materials", "Geom"]
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Geom"
+        {
+            over "Icosphere" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </Root/MatJewel> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+            }
+        }
+
+        def Sphere "Sphere" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/MatOuter> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double radius = 0.35000000000000003
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:surface.connect = </Root/jewel/Sphere/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                def Shader "DefaultSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+            }
+        }
+    }
+
+    def Material "MatJewel"
+    {
+        token outputs:mtlx:surface.connect = </Root/MatJewel/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:node:pos = (40, 40)
+        int ui:nodegraph:node:stackingOrder = 2
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (333.7788, 88.035904)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 788
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor.connect = </Root/MatJewel/RealitykitEnvironmentRadiance.outputs:specularRadiance>
+            float inputs:ior = 1.5
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:occlusion = 1
+            float inputs:opacity
+            float inputs:roughness = 0
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (104.74362, 81.872955)
+            float2 ui:nodegraph:node:size = (148.5, 199)
+            int ui:nodegraph:node:stackingOrder = 788
+        }
+
+        def Shader "RealitykitEnvironmentRadiance"
+        {
+            uniform token info:id = "ND_realitykit_environment_radiance"
+            color3f inputs:baseColor = (1, 1, 1) (
+                colorSpace = "srgb_texture"
+            )
+            half inputs:metallic = 1.5
+            float3 inputs:normal.connect = None
+            half inputs:roughness = 0
+            half inputs:specular = 0
+            color3f outputs:diffuseRadiance
+            color3f outputs:specularRadiance
+            float2 ui:nodegraph:node:pos = (-165.2344, 95.54971)
+            float2 ui:nodegraph:node:size = (244.5, 199)
+            int ui:nodegraph:node:stackingOrder = 788
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:specular", "inputs:metallic", "inputs:metallic", "inputs:roughness", "inputs:roughness", "inputs:baseColor"]
+        }
+    }
+
+    def Material "MatOuter"
+    {
+        token outputs:mtlx:surface.connect = </Root/MatOuter/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (518.40234, -8.324219)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 190
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor = (0.97162604, 0.34210688, 1) (
+                colorSpace = "srgb_texture"
+            )
+            color3f inputs:diffuseColor.connect = </Root/MatOuter/Multiply.outputs:out>
+            float inputs:opacity = 0.2
+            float inputs:roughness = 0.1
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (284.92188, -0.65234375)
+            int ui:nodegraph:node:stackingOrder = 190
+        }
+
+        def Shader "ViewDirection"
+        {
+            uniform token info:id = "ND_realitykit_viewdirection_vector3"
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-293.09766, 35.902344)
+            int ui:nodegraph:node:stackingOrder = 190
+        }
+
+        def Shader "Normal"
+        {
+            uniform token info:id = "ND_normal_vector3"
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-261.8086, 120.92969)
+            int ui:nodegraph:node:stackingOrder = 190
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
+        }
+
+        def Shader "DotProduct"
+        {
+            uniform token info:id = "ND_dotproduct_vector3"
+            float3 inputs:in1.connect = </Root/MatOuter/ViewDirection.outputs:out>
+            float3 inputs:in2.connect = </Root/MatOuter/Normal.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-85.47266, 61.566406)
+            int ui:nodegraph:node:stackingOrder = 190
+        }
+
+        def Shader "ConstantColor3"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.96353084, 0.050136775, 1) (
+                colorSpace = "srgb_texture"
+            )
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-39.82422, -29.890625)
+            int ui:nodegraph:node:stackingOrder = 190
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_color3FA"
+            prepend color3f inputs:in1.connect = </Root/MatOuter/ConstantColor3.outputs:out>
+            float inputs:in2.connect = </Root/MatOuter/DotProduct.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (98.38281, 21.933594)
+            int ui:nodegraph:node:stackingOrder = 190
+        }
+    }
+
+    def "jewel1" (
+        active = true
+        references = @Models/jewel1.usdz@
+    )
+    {
+        reorder nameChildren = ["Materials", "Geom", "Sphere_1"]
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "Sphere_1" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/MatOuter> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double radius = 0.35000000000000003
+            float2 ui:nodegraph:node:pos = (149.21484, 36.933594)
+            int ui:nodegraph:node:stackingOrder = 1
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.8, 1, 0.4)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:surface.connect = </Root/jewel1/Sphere_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+                def Shader "DefaultSurfaceShader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+            }
+        }
+
+        over "Geom"
+        {
+            over "Icosphere" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </Root/MatJewel> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+            }
+        }
+    }
+}
+

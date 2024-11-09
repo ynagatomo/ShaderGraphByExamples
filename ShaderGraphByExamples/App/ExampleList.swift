@@ -34,6 +34,14 @@ enum ExampleList {
                     // swiftlint:disable:next line_length
                     "A procedural warp effect shader. You can change the movement, color, and pattern by changing the node's parameters."
                 ],
+                dragable: false),
+        // [Ex03: Jewel]
+        Example(name: "Jewel",
+                thumbnail: "ex03",
+                sceneName: "Ex03",
+                description: [
+                    "A very simple Jewel shader with the Environment Radiance Node."
+                ],
                 dragable: false)
     ]
 }
