@@ -1,0 +1,142 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["plane1mx1m", "VolumetricMaterial"]
+    def "plane1mx1m" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.5707963, 0, 0)
+        }
+        references = @Models/plane1mx1m.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0.7071067, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Geom"
+        {
+            over "Plane" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </Root/VolumetricMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+            }
+        }
+    }
+
+    def Material "VolumetricMaterial"
+    {
+        token outputs:mtlx:surface.connect = </Root/VolumetricMaterial/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (950.4999, 78.46741)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 416
+
+        def Shader "Combine3"
+        {
+            uniform token info:id = "ND_combine3_vector3"
+            float inputs:in1.connect = </Root/VolumetricMaterial/Separate2.outputs:outx>
+            float inputs:in2.connect = </Root/VolumetricMaterial/Separate2.outputs:outy>
+            float inputs:in3 = 0.5
+            float inputs:in3.connect = </Root/VolumetricMaterial/Abs.outputs:out>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (177.96512, 133.98364)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "Separate2"
+        {
+            uniform token info:id = "ND_separate2_vector2"
+            float2 inputs:in.connect = </Root/VolumetricMaterial/TextureCoordinates.outputs:out>
+            float outputs:outx
+            float outputs:outy
+            float2 ui:nodegraph:node:pos = (3.2451568, 54.76785)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "TextureCoordinates"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-191.94598, -6.680681)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "Image3D"
+        {
+            uniform token info:id = "ND_RealityKitTexture3D_color3"
+            float inputs:bias
+            color3f inputs:default
+            float inputs:dynamic_min_lod_clamp
+            asset inputs:file = @Textures/nebula_volume.ktx@
+            float inputs:min_lod_clamp
+            string inputs:mip_filter = "linear"
+            int3 inputs:offset
+            float3 inputs:texcoord.connect = </Root/VolumetricMaterial/Combine3.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (461.32962, 62.60586)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "Time"
+        {
+            uniform token info:id = "ND_time_float"
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-315.41318, 176.92056)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "Abs"
+        {
+            uniform token info:id = "ND_absval_float"
+            float inputs:in.connect = </Root/VolumetricMaterial/Sin.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (59.592644, 218.88791)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "Sin"
+        {
+            uniform token info:id = "ND_sin_float"
+            float inputs:in.connect = </Root/VolumetricMaterial/Multiply.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-90.55787, 215.48184)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/VolumetricMaterial/Time.outputs:out>
+            float inputs:in2 = 0.2
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-205.61856, 272.53778)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap
+            color3f inputs:color.connect = </Root/VolumetricMaterial/Image3D.outputs:out>
+            bool inputs:hasPremultipliedAlpha
+            float inputs:opacity
+            float inputs:opacityThreshold
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (731.1561, 61.092403)
+            int ui:nodegraph:node:stackingOrder = 416
+        }
+    }
+}
+
