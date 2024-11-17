@@ -58,6 +58,14 @@ enum ExampleList {
                 description: [
                     "A transition with a depth-map."
                 ],
+                dragable: true),
+        // [Ex06: Stereo with a Depth-map]
+        Example(name: "Stereoscopic Depth",
+                thumbnail: "ex06",
+                sceneName: "Ex06",
+                description: [
+                    "Stereoscopic display with a depth-map. Apple Vision Pro is required to see."
+                ],
                 dragable: true)
     ]
 }

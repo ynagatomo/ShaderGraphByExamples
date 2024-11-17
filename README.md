@@ -15,6 +15,7 @@ This project shows examples of ShaderGraph in visionOS 2.
 | <img src="img/ex03.heic" width=200> | Ex03 | Jewel  | A very simple Jewel shader with the Environment Radiance Node. |
 | <img src="img/ex04.heic" width=200> | Ex04 | Nebula 3D  | A nebula with a 3D texture consisting of six 2D texture slices. |
 | <img src="img/ex05.heic" width=200> | Ex05 | Transition Depth | A transition with a depth-map. |
+| <img src="img/ex06.heic" width=200> | Ex06 | Stereoscopic Depth |Stereoscopic display with a depth-map. Apple Vision Pro is required to see. |
 
 ### 3D Texture Image File: KTX
 
@@ -39,6 +40,14 @@ Depth Pro CLI: ```% depth-pro-run -i mydata/girl.png -o results --skip-display``
 
 <img src="img/appledepthpro.jpg">
 
+### Stereoscopic rendering with Blender
+
+To create side-by-side images for stereoscopic display on Apple Vision Pro,
+you can use Blender like below.
+
+<img src="img/blendersbs.jpg">
+
+
 ## References
 
 - Sample Code: ShaderGraph Examples in visionOS 1.2 [GitHub: ynagatomo/SGMExamples](https://github.com/ynagatomo/SGMExamples)
@@ -51,7 +60,7 @@ Depth Pro CLI: ```% depth-pro-run -i mydata/girl.png -o results --skip-display``
 <summary>click to open</summary>
 
 1. [Nov 3, 2024] Added the Ex01, "Interior Mapping Shader"
-1. [Nov 17, 2024] Added the Ex04, "Nebura with a 3D texture"
+1. [Nov 17, 2024] Added the Ex04, Ex05, Ex06, "Nebura with a 3D texture"
 
 </details>
 
