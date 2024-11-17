@@ -42,6 +42,14 @@ enum ExampleList {
                 description: [
                     "A very simple Jewel shader with the Environment Radiance Node."
                 ],
-                dragable: false)
+                dragable: false),
+        // [Ex04: Nebula with a 3D texture]
+        Example(name: "Nebula 3D",
+                thumbnail: "ex04",
+                sceneName: "Ex04",
+                description: [
+                    "A nebula with a 3D texture consisting of six 2D texture slices."
+                ],
+                dragable: true)
     ]
 }
