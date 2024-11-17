@@ -37,7 +37,7 @@ GitHub: https://github.com/apple/ml-depth-pro
 
 Depth Pro CLI: ```% depth-pro-run -i mydata/girl.png -o results --skip-display```bash
 
-<img src="img/appledepth.jpg">
+<img src="img/appledepthpro.jpg">
 
 ## References
 
