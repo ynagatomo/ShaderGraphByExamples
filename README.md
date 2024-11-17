@@ -15,6 +15,12 @@ This project shows examples of ShaderGraph in visionOS 2.
 | <img src="img/ex03.heic" width=200> | Ex03 | Jewel  | A very simple Jewel shader with the Environment Radiance Node. |
 | <img src="img/ex04.heic" width=200> | Ex04 | Nebula 3D  | A nebula with a 3D texture consisting of six 2D texture slices. |
 
+### 3D Texture Image File: KTX
+
+An example of how to create a 3d texture image file, '.ktx', with Blender and Apple TextureConverter. 
+
+<img src="img/howtocreate3dtexture.jpg">
+
 ## References
 
 - Sample Code: ShaderGraph Examples in visionOS 1.2 [GitHub: ynagatomo/SGMExamples](https://github.com/ynagatomo/SGMExamples)
