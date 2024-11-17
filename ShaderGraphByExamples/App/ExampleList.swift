@@ -50,6 +50,14 @@ enum ExampleList {
                 description: [
                     "A nebula with a 3D texture consisting of six 2D texture slices."
                 ],
+                dragable: true),
+        // [Ex05: Transition with a Depth-map]
+        Example(name: "Transition Depth",
+                thumbnail: "ex05",
+                sceneName: "Ex05",
+                description: [
+                    "A transition with a depth-map."
+                ],
                 dragable: true)
     ]
 }
