@@ -60,7 +60,8 @@
     "objectMetadataList" : [
       [
         "663CF7E5-36B8-49FD-8229-85994D11C9C2",
-        "Root"
+        "Root",
+        "jewel1"
       ],
       {
         "isExpanded" : true,
@@ -77,18 +78,7 @@
       },
       [
         "663CF7E5-36B8-49FD-8229-85994D11C9C2",
-        "Root",
-        "jewel1",
-        "Geom"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "663CF7E5-36B8-49FD-8229-85994D11C9C2",
-        "Root",
-        "jewel1"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -102,11 +92,29 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "663CF7E5-36B8-49FD-8229-85994D11C9C2",
+        "Root",
+        "jewel1",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
   "82DC4AF2-611D-459F-AA26-C8D1681990F4" : {
     "objectMetadataList" : [
+      [
+        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
       [
         "82DC4AF2-611D-459F-AA26-C8D1681990F4",
         "Root",
@@ -122,14 +130,6 @@
         "Root",
         "plane",
         "Materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
-        "Root"
       ],
       {
         "isExpanded" : true,
@@ -181,17 +181,6 @@
       },
       [
         "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
-        "Root",
-        "warphole",
-        "Geom",
-        "Cylinder"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
         "Root"
       ],
       {
@@ -202,6 +191,17 @@
         "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
         "Root",
         "warphole"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
+        "Root",
+        "warphole",
+        "Geom",
+        "Cylinder"
       ],
       {
         "isExpanded" : true,
@@ -235,7 +235,24 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
+        "Sphere_Right"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
         "GridMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -249,23 +266,6 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Sphere_Right"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
@@ -273,7 +273,8 @@
     "objectMetadataList" : [
       [
         "C4AAC052-461E-4693-8E7F-C838612D1520",
-        "Root"
+        "Root",
+        "VolumetricMaterial"
       ],
       {
         "isExpanded" : true,
@@ -281,8 +282,7 @@
       },
       [
         "C4AAC052-461E-4693-8E7F-C838612D1520",
-        "Root",
-        "VolumetricMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -320,9 +320,7 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -330,7 +328,30 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "D6A5D356-228B-49B1-8379-DC92AA5AA057" : {
+    "objectMetadataList" : [
+      [
+        "D6A5D356-228B-49B1-8379-DC92AA5AA057",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D6A5D356-228B-49B1-8379-DC92AA5AA057",
+        "Root",
+        "MaterialDepth"
       ],
       {
         "isExpanded" : true,
