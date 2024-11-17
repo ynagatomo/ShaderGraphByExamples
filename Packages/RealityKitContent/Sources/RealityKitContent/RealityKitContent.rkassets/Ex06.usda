@@ -1,0 +1,229 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["plane1mx1m", "StereoMaterial"]
+    def "plane1mx1m" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.5707963, 0, 0)
+        }
+        references = @Models/plane1mx1m.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, 0.7071067, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Geom"
+        {
+            over "Plane" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </Root/StereoMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+            }
+        }
+    }
+
+    def Material "StereoMaterial"
+    {
+        token outputs:mtlx:surface.connect = </Root/StereoMaterial/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (857.5441, 180.27998)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 731
+
+        def Shader "CameraIndexSwitch"
+        {
+            uniform token info:id = "ND_realitykit_geometry_switch_cameraindex_color3"
+            color3f inputs:left.connect = </Root/StereoMaterial/Image.outputs:out>
+            color3f inputs:mono
+            color3f inputs:right.connect = </Root/StereoMaterial/Image_2.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (167.79343, 15.282708)
+            int ui:nodegraph:node:stackingOrder = 765
+        }
+
+        def Shader "Image_5"
+        {
+            uniform token info:id = "ND_image_float"
+            asset inputs:file = @Textures/girlgray.jpg@
+            string inputs:filtertype
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-877.0457, -16.672215)
+            int ui:nodegraph:node:stackingOrder = 759
+        }
+
+        def Shader "Subtract"
+        {
+            uniform token info:id = "ND_subtract_float"
+            float inputs:in1.connect = </Root/StereoMaterial/Separate2.outputs:outx>
+            float inputs:in2.connect = </Root/StereoMaterial/Multiply_1.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-525.9245, -82.940636)
+            int ui:nodegraph:node:stackingOrder = 755
+        }
+
+        def Shader "Combine2"
+        {
+            uniform token info:id = "ND_combine2_vector2"
+            float inputs:in1.connect = </Root/StereoMaterial/Add_1.outputs:out>
+            float inputs:in2.connect = </Root/StereoMaterial/Separate2.outputs:outy>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-379.72015, 382.25128)
+            int ui:nodegraph:node:stackingOrder = 743
+        }
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap
+            color3f inputs:color.connect = </Root/StereoMaterial/CameraIndexSwitch.outputs:out>
+            bool inputs:hasPremultipliedAlpha
+            float inputs:opacity
+            float inputs:opacityThreshold
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (638.92126, 176.182)
+            int ui:nodegraph:node:stackingOrder = 726
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default
+            asset inputs:file = @Textures/girl.png@
+            string inputs:filtertype
+            float2 inputs:texcoord.connect = </Root/StereoMaterial/Combine2_1.outputs:out>
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-180.6259, -144.22684)
+            int ui:nodegraph:node:stackingOrder = 728
+        }
+
+        def Shader "Separate2"
+        {
+            uniform token info:id = "ND_separate2_vector2"
+            float2 inputs:in.connect = </Root/StereoMaterial/TextureCoordinates.outputs:out>
+            float outputs:outx
+            float outputs:outy
+            float2 ui:nodegraph:node:pos = (-829.40704, 259.11142)
+            int ui:nodegraph:node:stackingOrder = 761
+        }
+
+        def Shader "TextureCoordinates"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-1029.225, 233.73282)
+            int ui:nodegraph:node:stackingOrder = 763
+        }
+
+        def Shader "Image_2"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default
+            asset inputs:file = @Textures/girl.png@
+            string inputs:filtertype
+            float2 inputs:texcoord.connect = </Root/StereoMaterial/Combine2.outputs:out>
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-176.55495, 277.84894)
+            int ui:nodegraph:node:stackingOrder = 729
+        }
+
+        def Shader "Add_1"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/StereoMaterial/Multiply_1.outputs:out>
+            float inputs:in2.connect = </Root/StereoMaterial/Separate2.outputs:outx>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-513.58325, 325.42828)
+            int ui:nodegraph:node:stackingOrder = 753
+        }
+
+        def Shader "Combine2_1"
+        {
+            uniform token info:id = "ND_combine2_vector2"
+            float inputs:in1.connect = </Root/StereoMaterial/Subtract.outputs:out>
+            float inputs:in2.connect = </Root/StereoMaterial/Separate2.outputs:outy>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-385.77664, -37.38329)
+            int ui:nodegraph:node:stackingOrder = 745
+        }
+
+        def Shader "AdditiveMix"
+        {
+            uniform token info:id = "ND_plus_color3"
+            color3f inputs:bg.connect = </Root/StereoMaterial/Combine3_1.outputs:out>
+            color3f inputs:fg.connect = </Root/StereoMaterial/Combine3.outputs:out>
+            float inputs:mix
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (425.87164, 320.83157)
+            int ui:nodegraph:node:stackingOrder = 771
+        }
+
+        def Shader "Multiply_1"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/StereoMaterial/Image_5.outputs:out>
+            float inputs:in2 = 0.02
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-629.3504, 201.94196)
+            int ui:nodegraph:node:stackingOrder = 757
+        }
+
+        def Shader "Separate3"
+        {
+            uniform token info:id = "ND_separate3_color3"
+            color3f inputs:in.connect = </Root/StereoMaterial/Image.outputs:out>
+            float outputs:outg
+            float outputs:outr
+            float2 ui:nodegraph:node:pos = (29.886606, -172.68163)
+            int ui:nodegraph:node:stackingOrder = 730
+        }
+
+        def Shader "Combine3"
+        {
+            uniform token info:id = "ND_combine3_color3"
+            float inputs:in1.connect = </Root/StereoMaterial/Separate3.outputs:outr>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (210.36246, -173.17097)
+            int ui:nodegraph:node:stackingOrder = 734
+        }
+
+        def Shader "Separate3_1"
+        {
+            uniform token info:id = "ND_separate3_color3"
+            color3f inputs:in.connect = </Root/StereoMaterial/Image_2.outputs:out>
+            float outputs:outb
+            float outputs:outg
+            float outputs:outr
+            float2 ui:nodegraph:node:pos = (57.20687, 452.70245)
+            int ui:nodegraph:node:stackingOrder = 767
+        }
+
+        def Shader "Combine3_1"
+        {
+            uniform token info:id = "ND_combine3_color3"
+            float inputs:in1.connect = None
+            float inputs:in2.connect = </Root/StereoMaterial/Separate3_1.outputs:outg>
+            float inputs:in3.connect = </Root/StereoMaterial/Separate3_1.outputs:outb>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (240.52716, 450.34738)
+            int ui:nodegraph:node:stackingOrder = 769
+        }
+    }
+}
+
