@@ -3,7 +3,7 @@
 This project shows examples of ShaderGraph in visionOS 2.
 
 - GitHub : https://github.com/ynagatomo/ShaderGraphByExamples
-- Xcode 16.1 , visionOS 2.1
+- Xcode 16.1+ , visionOS 2.1+
 - Some examples only work with a real Apple Vision Pro device.
 
 ## ShaderGraph Examples
@@ -13,6 +13,7 @@ This project shows examples of ShaderGraph in visionOS 2.
 | <img src="img/ex01.heic" width=200> | Ex01 | Interior Mapping  | Calculating the intersection of the line of sight and the wall and draw a space with pseudo depth. |
 | <img src="img/ex02.heic" width=200> | Ex02 | Warp VFX  | A procedural warp effect shader. You can change the movement, color, and pattern by changing the node's parameters. |
 | <img src="img/ex03.heic" width=200> | Ex03 | Jewel  | A very simple Jewel shader with the Environment Radiance Node. |
+| <img src="img/ex04.heic" width=200> | Ex04 | Nebula 3D  | A nebula with a 3D texture consisting of six 2D texture slices. |
 
 ## References
 
@@ -26,6 +27,7 @@ This project shows examples of ShaderGraph in visionOS 2.
 <summary>click to open</summary>
 
 1. [Nov 3, 2024] Added the Ex01, "Interior Mapping Shader"
+1. [Nov 17, 2024] Added the Ex04, "Nebura with a 3D texture"
 
 </details>
 
