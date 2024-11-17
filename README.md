@@ -1,5 +1,7 @@
 # ShaderGraph by Examples in visionOS
 
+<img src="img/banner.heic">
+
 This project shows examples of ShaderGraph in visionOS 2.
 
 - GitHub : https://github.com/ynagatomo/ShaderGraphByExamples
