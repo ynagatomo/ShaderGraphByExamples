@@ -15,8 +15,7 @@
     "objectMetadataList" : [
       [
         "28A1C3C8-CA45-43DC-A890-E386727ECB4B",
-        "Root",
-        "plane1mx0_5mDFB"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -24,7 +23,8 @@
       },
       [
         "28A1C3C8-CA45-43DC-A890-E386727ECB4B",
-        "Root"
+        "Root",
+        "plane1mx0_5mDFB"
       ],
       {
         "isExpanded" : true,
@@ -69,6 +69,15 @@
       [
         "663CF7E5-36B8-49FD-8229-85994D11C9C2",
         "Root",
+        "MatOuter"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "663CF7E5-36B8-49FD-8229-85994D11C9C2",
+        "Root",
         "jewel1",
         "Geom"
       ],
@@ -80,15 +89,6 @@
         "663CF7E5-36B8-49FD-8229-85994D11C9C2",
         "Root",
         "jewel1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "663CF7E5-36B8-49FD-8229-85994D11C9C2",
-        "Root",
-        "MatOuter"
       ],
       {
         "isExpanded" : true,
@@ -110,44 +110,6 @@
       [
         "82DC4AF2-611D-459F-AA26-C8D1681990F4",
         "Root",
-        "plane1mx0_5mDFB",
-        "env_light"
-      ],
-      {
-        "disallowsFraming" : false,
-        "isExpanded" : false,
-        "isLocked" : false
-      },
-      [
-        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
-        "Root",
-        "InteriorMapping"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
-        "Root",
-        "plane1mx0_5mDFB",
-        "Plane"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
-        "Root",
         "plane",
         "Geom"
       ],
@@ -164,28 +126,49 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      }
-    ]
-  },
-  "9901D49B-A0A7-408B-B62C-BA50B672ECCA" : {
-    "objectMetadataList" : [
-      [
-        "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
-        "Root",
-        "warphole"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       },
       [
-        "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
+        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
         "Root"
       ],
       {
         "isExpanded" : true,
         "isLocked" : false
       },
+      [
+        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
+        "Root",
+        "plane1mx0_5mDFB",
+        "env_light"
+      ],
+      {
+        "disallowsFraming" : false,
+        "isExpanded" : false,
+        "isLocked" : false
+      },
+      [
+        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
+        "Root",
+        "plane1mx0_5mDFB",
+        "Plane"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "82DC4AF2-611D-459F-AA26-C8D1681990F4",
+        "Root",
+        "InteriorMapping"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "9901D49B-A0A7-408B-B62C-BA50B672ECCA" : {
+    "objectMetadataList" : [
       [
         "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
         "Root",
@@ -202,6 +185,23 @@
         "warphole",
         "Geom",
         "Cylinder"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "9901D49B-A0A7-408B-B62C-BA50B672ECCA",
+        "Root",
+        "warphole"
       ],
       {
         "isExpanded" : true,
@@ -235,7 +235,7 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Sphere_Left"
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -243,7 +243,8 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
+        "Root",
+        "Sphere_Left"
       ],
       {
         "isExpanded" : true,
@@ -260,8 +261,28 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "C4AAC052-461E-4693-8E7F-C838612D1520" : {
+    "objectMetadataList" : [
+      [
+        "C4AAC052-461E-4693-8E7F-C838612D1520",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "C4AAC052-461E-4693-8E7F-C838612D1520",
         "Root",
-        "GridMaterial"
+        "VolumetricMaterial"
       ],
       {
         "isExpanded" : true,
