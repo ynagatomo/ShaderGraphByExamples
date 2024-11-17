@@ -19,6 +19,10 @@ This project shows examples of ShaderGraph in visionOS 2.
 
 An example of how to create a 3d texture image file, '.ktx', with Blender and Apple TextureConverter. 
 
+1. Render image slices of a volumetric 3d scene.
+2. Convert them to a ktx file with Apple TextureConverter using '--build_volume' option.
+3. Use the ktx texture file with the Image3D shader-graph node.
+
 <img src="img/howtocreate3dtexture.jpg">
 
 ## References
