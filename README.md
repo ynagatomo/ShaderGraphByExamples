@@ -38,9 +38,17 @@ a foundation model for zero-shot metric monocular depth estimation.
 
 GitHub: https://github.com/apple/ml-depth-pro
 
-Depth Pro CLI: ```% depth-pro-run -i mydata/girl.png -o results --skip-display```bash
+Depth Pro CLI: `% depth-pro-run -i mydata/girl.png -o results --skip-display`
 
 <img src="img/appledepthpro.jpg">
+
+Modify Apple Depth-Pro's python code to save grayscale depth-map;
+
+ml-depth-pro/src/depth_pro/cli/run.py:
+
+`90    cmap = plt.get_cmap("binary") # for grayscale depth map`
+
+<img src="img/depthprobinary.jpg">
 
 ### Stereoscopic rendering with Blender
 
